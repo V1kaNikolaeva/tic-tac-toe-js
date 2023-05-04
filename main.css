@@ -1,0 +1,97 @@
+body {
+    background-color: rgb(255, 255, 255);
+    font-family: 'Tilt Neon', cursive;
+    font-size: 20px;
+    font-weight: 100;
+}
+.wrapper {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 300px;
+}
+
+.players {
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.firstPlayer {
+    color: rgb(170, 39, 39);
+}
+
+.secondPlayer {
+    color: rgb(26, 159, 159);
+}
+
+.fristLine, .secondLine, .thirdLine {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.block {
+    height: 70px;
+    width: 70px;
+    border: 4px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    margin-bottom: 20px;
+    font-size: 45px;
+}
+
+.winner {
+    text-align: center;
+    height: 30px;
+    font-weight: 1000;
+}
+
+.btnWrapper {
+    margin: 0 auto;
+    width: 320px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.zerosWins, .crossWins {
+    height: 30px;
+    width: 100px;
+}
+
+
+.restartBtn, .clearBtn {
+    font-family: 'Tilt Neon', cursive;
+    font-size: 20px;
+    font-weight: 100;
+    border: 3px solid rgb(0, 0, 0);
+    background-color: transparent;
+    height: 40px;
+    width: 150px;
+    border-radius: 15px;
+}
+
+.clearBtn:hover {
+    color:rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    cursor: pointer;
+    outline: solid black 1px;
+    transition: .2s color background-color;
+}
+
+.restartBtn:hover {
+    color:rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    cursor: pointer;
+    outline: solid black 1px;
+    transition: .2s color background-color;
+}
+
