@@ -11,15 +11,19 @@
     <title>Tic-Tac-Toe</title>
 </head>
 <body>
+    <div class="chooseFirstMove">
+        <h2>choose who will make the move first</h2>
+        <h3>key [1] is zero, key [2] is cross</h3>
+    </div>
     <div class="players">
         <div class="firstPlayer">
-            <h2>First Player o</h2>
+            <h2 class="firstPlayerO">first player (zero)</h2>
             <h3 class="zerosWins">
 
             </h3>
         </div>
         <div class="secondPlayer">
-            <h2>Second Player x</h2>
+            <h2 class="secondPlayerX">second player (cross)</h2>
             <h3 class="crossWins">
 
             </h3>
@@ -64,13 +68,13 @@
         <p class="winner"></p>
         <div class="buttons">
             <button class="restartBtn">
-                Restart
+                restart
             </button>
             <button class="clearBtn">
-                Clear fields
+                clear fields
             </button>
         </div>
     </div>
-<script src="/main.js"></script>
+<script src="/main.js" type="module"></script>
 </body>
 </html>

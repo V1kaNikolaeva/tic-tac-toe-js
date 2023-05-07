@@ -1,10 +1,15 @@
+'use strict'
 const block = document.querySelectorAll('.block');
 const all = document.getElementById('all');
-const winnerHTML = document.querySelector('.winner')
-const restartBtn = document.querySelector('.restartBtn')
-const clearBtn = document.querySelector('.clearBtn')
-const zerosWinsHTML = document.querySelector('.zerosWins')
-const crossWinsHTML = document.querySelector('.crossWins')
+const winnerHTML = document.querySelector('.winner');
+const restartBtn = document.querySelector('.restartBtn');
+const clearBtn = document.querySelector('.clearBtn');
+const zerosWinsHTML = document.querySelector('.zerosWins');
+const crossWinsHTML = document.querySelector('.crossWins');
+const firstPlayerO = document.querySelector('.firstPlayerO');
+const secondPlayerX = document.querySelector('.secondPlayerX');
+const players = document.querySelector('.players')
+
 const WINNING_COMBINATIONS = [
 	[0, 1, 2],
 	[3, 4, 5],
@@ -21,18 +26,43 @@ let array = [
     '', '', '',
     '', '', '',
 ];
-
+let run = false;
 let move = 0;
-let result = false;
 
+//выбор кто первый ходит по кнопкам
+document.addEventListener('keydown', function(event) {
+    if (run == true) {
+        return;
+    }
+    if (event.code == 'Digit1') {
+        move = 0;
+    } else if (event.code == 'Digit2') {
+        move = 1;
+    }
+});
+
+//выбор кто первый ходит на интерфейсе
+players.onclick = function(event) {
+    if (run == true) {
+        return;
+    }
+    if (event.target.className == 'firstPlayerO') {
+        move = 0;
+    } else if (event.target.className == 'secondPlayerX') {
+        move = 1;
+    }
+}
+
+let result = false;
 let crossWins = 0;
 let zerosWins = 0;
 
-crossWinsHTML.innerHTML = 'Wins: ' + crossWins;
-zerosWinsHTML.innerHTML = 'Wins: ' + zerosWins;
+crossWinsHTML.innerHTML = 'wins:' + ' ' + crossWins;
+zerosWinsHTML.innerHTML = 'wins:' + ' ' + zerosWins;
 
 all.onclick = function(event) {
     if (event.target.className == 'block') {
+        run = true;
         if (result == true) {
             return;
         }
@@ -56,7 +86,6 @@ all.onclick = function(event) {
             event.target.innerHTML = 'x';
         }
         move++
-        console.log(move)
     }
 }
 
@@ -75,8 +104,8 @@ function checkWinner() {
                 if (resultCross.length === WINNING_COMBINATIONS[j].length && resultCross.every((value, index) => value === WINNING_COMBINATIONS[j][index])) {
                     result = true;
                     crossWins++
-                    crossWinsHTML.innerHTML = 'Wins: ' + crossWins;
-                    winnerHTML.innerHTML = 'Победили крестики!';
+                    crossWinsHTML.innerHTML = 'wins: ' + crossWins;
+                    winnerHTML.innerHTML = 'победили крестики!';
                     winnerHTML.style.color = "rgb(26, 159, 159)";
                     return;
                 }
@@ -88,13 +117,12 @@ function checkWinner() {
             for (let k = 0; k < WINNING_COMBINATIONS.length; k++) {
                 //смотрим содержит ли выигрышные комбинации indexOfZero и сохраняем в resultZero 
                 let resultZero = indexOfZero.filter(x => WINNING_COMBINATIONS[k].includes(x));
-                console.log(resultZero)
                 //если результат равен выигрышным комбинациям
                 if (resultZero.length === WINNING_COMBINATIONS[k].length && resultZero.every((value, index) => value === WINNING_COMBINATIONS[k][index])) {
                     result = true;
                     zerosWins++;
-                    zerosWinsHTML.innerHTML = 'Wins: ' + zerosWins;
-                    winnerHTML.innerHTML = 'Победили нолики!';
+                    zerosWinsHTML.innerHTML = 'wins: ' + zerosWins;
+                    winnerHTML.innerHTML = 'победили нолики!';
                     winnerHTML.style.color = "rgb(170, 39, 39)";
                     return;
                 }
@@ -107,10 +135,11 @@ restartBtn.onclick = function() {
     history.go();
 }
 
-clearBtn.onclick = function(event) {
+clearBtn.onclick = function() {
     block.forEach(element => element.innerHTML = '');
     winnerHTML.innerHTML = '';
     result = false;
+    run = false;
     move = 0;
     array = [
         '', '', '',

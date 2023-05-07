@@ -4,6 +4,12 @@ body {
     font-size: 20px;
     font-weight: 100;
 }
+
+.chooseFirstMove {
+    text-align: center;
+    font-size: 25px;
+}
+
 .wrapper {
     text-align: center;
     margin: 0 auto;
@@ -28,6 +34,15 @@ body {
     color: rgb(26, 159, 159);
 }
 
+.firstPlayerO, .secondPlayerX {
+    position: relative;
+    height: 45px;
+}
+
+.firstPlayerO:hover, .secondPlayerX:hover {
+    cursor: pointer;
+}
+
 .fristLine, .secondLine, .thirdLine {
     display: flex;
     flex-direction: row;
@@ -41,6 +56,7 @@ body {
     border-radius: 15px;
     margin-bottom: 20px;
     font-size: 45px;
+    cursor: pointer;
 }
 
 .winner {
@@ -64,7 +80,6 @@ body {
 
 .zerosWins, .crossWins {
     height: 30px;
-    width: 100px;
 }
 
 
@@ -79,7 +94,7 @@ body {
     border-radius: 15px;
 }
 
-.clearBtn:hover {
+.clearBtn:hover, .restartBtn:hover {
     color:rgb(255, 255, 255);
     background-color: rgb(0, 0, 0);
     cursor: pointer;
@@ -87,11 +102,5 @@ body {
     transition: .2s color background-color;
 }
 
-.restartBtn:hover {
-    color:rgb(255, 255, 255);
-    background-color: rgb(0, 0, 0);
-    cursor: pointer;
-    outline: solid black 1px;
-    transition: .2s color background-color;
-}
+
 
