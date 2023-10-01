@@ -8,7 +8,7 @@ const zerosWinsHTML = document.querySelector('.zerosWins');
 const crossWinsHTML = document.querySelector('.crossWins');
 const firstPlayerO = document.querySelector('.firstPlayerO');
 const secondPlayerX = document.querySelector('.secondPlayerX');
-const players = document.querySelector('.players')
+const players = document.querySelector('.players');
 
 const WINNING_COMBINATIONS = [
 	[0, 1, 2],
@@ -72,6 +72,7 @@ all.onclick = function(event) {
                 if (event.target.id == index) {
                     array[index] = 'o';
                     checkWinner();
+                    deadHeat();
                 }
             });
             event.target.innerHTML = 'o';
@@ -81,12 +82,27 @@ all.onclick = function(event) {
                 if (event.target.id == index) {
                     array[index] = 'x';
                     checkWinner();
+                    deadHeat();
                 }
             });
             event.target.innerHTML = 'x';
         }
         move++
     }
+}
+
+function deadHeat() {
+    let count = 0;
+    array.forEach(function(item) {
+        if (item != '') {
+            count++; 
+        }
+        if (count === 9 && result == false) {
+            result = true;
+            winnerHTML.innerHTML = 'ничья!';
+            winnerHTML.style.color = "rgb(95, 95, 95)";
+        }
+    })  
 }
 
 function checkWinner() {
